@@ -3,7 +3,7 @@ from datetime import timedelta
 from flask import flash
 
 app = Flask(__name__)
-
+app.secret_key = 'secret_key'
 app.permanent_session_lifetime = timedelta(minutes=5)
 
 @app.route('/')
@@ -16,9 +16,11 @@ def login():
         session.permanent = True
         user = request.form['name']
         session['user'] = user
+        flash('login successful', 'success')
         return redirect(url_for('user'))
     else:
         if 'user' in session:
+            flash('You are already Logged In')
             return redirect(url_for('user'))
         return render_template('login.html')
 
@@ -27,8 +29,9 @@ def login():
 def user():
     if 'user' in session:
         user = session['user']
-        return f"You are logged in {user}!"
+        return render_template('user.html')
     else:
+        flash('You are not logged in')
         return redirect(url_for('login'))
 
 @app.route('/logout')
