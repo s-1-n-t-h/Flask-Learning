@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI-Calculator</title>
+</head>
+<body>
+    <nav align="center">BMI Calculator</nav>
+    <h4>{{ pred }}</h4>
+    <form action="/predict" method="post">
+        <br>
+        <label for="weight"><b>Weight</b></label>
+        <br>
+        <input type="number" name="weight" placeholder="Weight in Kilograms">
+        <br><br>
+        <label for="weight"><b>Height</b></label>
+        <br>
+        <input type="number" name="height" placeholder="Height in centimetres">
+        <br><br>
+        <input type="submit" value='submit' name="" id="">
+    </form>
+</body>
+</html>
